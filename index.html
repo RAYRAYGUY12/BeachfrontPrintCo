@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beachfront Print Co. - Your Print Partner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        header img.logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin: 0;
+            font-weight: 700;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 25px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #2980b9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom right, #e0f2f7, #bbdefb);
+            margin-bottom: 40px;
+        }
+        .hero h2 {
+            font-size: 3.2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        /* Product Selection */
+        .product-selection {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .product-card {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            border-color: #3498db;
+        }
+        .product-card h3 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        .product-card p {
+            color: #666;
+            font-size: 1rem;
+            min-height: 60px; /* Ensure consistent card height */
+        }
+        .product-card .price-info { /* New style for price prominence */
+            font-size: 1.1rem; /* Slightly larger font */
+            font-weight: 700; /* Extra bold */
+            color: #1e8449; /* Darker green color for pricing */
+            margin-top: 10px; /* Space above price */
+            display: block; /* Ensures it's on its own line */
+        }
+        .product-card button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .product-card button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Order Form */
+        .order-form-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+            display: none; /* Hidden by default */
+        }
+        .order-form-section.active {
+            display: block;
+        }
+        .order-form-section h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .form-actions button {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .form-actions button:hover {
+            background-color: #219d53;
+            transform: translateY(-2px);
+        }
+        
+        /* About Us Section */
+        .about-us-section {
+            background-color: #eaf6f8;
+            padding: 50px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        .about-us-section h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .about-us-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #eaf6f8;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            font-size: 0.9rem;
+        }
+        
+        .footer-social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .footer-social-links a {
+            display: inline-block;
+            margin: 0 5px;
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .footer-social-links a:hover {
+            color: #3498db;
+            text-shadow: 1px 1px 4px rgba(52, 152, 219, 0.6);
+        }
+
+        /* Venmo QR Section */
+        .venmo-qr-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .venmo-qr-section h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .venmo-qr-section img {
+            max-width: 220px;
+            height: auto;
+            border: 5px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .venmo-qr-section p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .venmo-qr-section .venmo-handle {
+            font-weight: 700;
+            color: #3498db;
+            font-size: 1.2em;
+        }
+
+        /* Styles for product-specific size/spec fields - hidden by default */
+        .product-specific-field {
+            display: none;
+        }
+
+        /* Styles for the Thank You section */
+        #thank-you-section {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 60px;
+        }
+        #thank-you-section h1 {
+            font-size: 3rem;
+            color: #27ae60; /* Green for success */
+            margin-bottom: 20px;
+        }
+        #thank-you-section p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        #thank-you-section a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        #thank-you-section a:hover {
+            text-decoration: underline;
+        }
+
+        .one-color-note {
+            font-size: 0.95em;
+            color: #e74c3c; /* A distinct color for emphasis */
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .product-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .order-form-section, #thank-you-section, .about-us-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="logo.png" alt="Beachfront Print Co. Logo" class="logo">
+            <h1>Beachfront Print Co.</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Your Vision, Our Print. Custom Apparel Made Easy!</h2>
+            <p>Whether it's a single design for a special occasion or bulk orders for your brand, we're here to bring your ideas to life on high-quality shirts, koozies, and sweatshirts. Please note: <strong>Only one-color prints are available at this time.</strong></p>
+            <a href="#products" class="cta-button">Start Your Custom Order</a>
+        </section>
+
+        <section id="about-us" class="about-us-section">
+            <h2 class="section-title">Our Story</h2>
+            <p>For the past three summers, Beachfront Print Co. has been a staple at Brown's Bank, a beloved local sand bank. We started small, selling homemade, high-quality tees right on the beach, connecting directly with our community and seeing the joy our custom prints brought.</p>
+            <p>That passion for unique, personalized apparel has grown, and now we're excited to expand our reach beyond the sand. Our mission is to help everyone bring their shirt ideas to fruition, providing the same dedication to quality and custom care that our beach customers have come to love. Let us help you wear your vision!</p>
+        </section>
+
+        <section id="products">
+            <h2 class="section-title">What Can We Create For You?</h2>
+            <div class="product-selection">
+                <div class="product-card" onclick="showOrderForm('Shirt')">
+                    <h3>Custom Shirts</h3>
+                    <p>Perfect for events, teams, or personal statements. Wide range of styles and colors available. <strong>One-color print only.</strong> <span class="price-info">($10-15 per shirt)</span></p>
+                    <button>Order Shirt</button>
+                </div>
+                <div class="product-card" onclick="showOrderForm('Koozie')">
+                    <h3>Personalized Koozies</h3>
+                    <p>Keep your drinks cool and your brand hot! Ideal for parties, giveaways, or business promotion. <strong>One-color print only.</strong> <span class="price-info">($5-10 per koozie)</span></p>
+                    <button>Order Koozie</button>
+                </div>
+                <div class="product-card" onclick="showOrderForm('Sweatshirt')">
+                    <h3>Custom Sweatshirts</h3>
+                    <p>Stay cozy and stylish with your unique design on comfortable sweatshirts and hoodies. <strong>One-color print only.</strong> <span class="price-info">($15-20 per sweatshirt)</span></p>
+                    <button>Order Sweatshirt</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="order-form" class="order-form-section">
+            <h3>Place Your Custom Order for <span id="selected-product-type"></span></h3>
+            <form id="orderForm" action="https://formspree.io/f/xjkowgle" method="POST">
+                <input type="hidden" name="product_type" id="hidden-product-type">
+
+                <div class="form-group">
+                    <label for="customer_name">Your Full Name:</label>
+                    <input type="text" id="customer_name" name="customer_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer_email">Email Address:</label>
+                    <input type="email" id="customer_email" name="customer_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer_phone">Phone Number (Optional):</label>
+                    <input type="tel" id="customer_phone" name="customer_phone">
+                </div>
+
+                <h4>Shipping Information</h4>
+                <div class="form-group">
+                    <label for="shipping_address">Street Address:</label>
+                    <input type="text" id="shipping_address" name="shipping_address" required>
+                </div>
+                <div class="form-group">
+                    <label for="shipping_city">City:</label>
+                    <input type="text" id="shipping_city" name="shipping_city" required>
+                </div>
+                <div class="form-group">
+                    <label for="shipping_state">State/Province:</label>
+                    <input type="text" id="shipping_state" name="shipping_state" required>
+                </div>
+                <div class="form-group">
+                    <label for="shipping_zip">Zip/Postal Code:</label>
+                    <input type="text" id="shipping_zip" name="shipping_zip" required>
+                </div>
+                <div class="form-group">
+                    <label for="shipping_country">Country:</label>
+                    <input type="text" id="shipping_country" name="shipping_country" value="United States" required>
+                </div>
+
+                <h4>Order Specifics</h4>
+                <div class="form-group">
+                    <label for="item_quantity">Quantity:</label>
+                    <input type="number" id="item_quantity" name="item_quantity" min="1" value="1" required>
+                </div>
+
+                <div id="shirt_sizes_group" class="form-group product-specific-field">
+                    <label for="shirt_sizes">Shirt Sizes (e.g., 2 S, 5 M, 3 L, 1 XL):</label>
+                    <textarea id="shirt_sizes" name="shirt_sizes" rows="3" placeholder="Specify sizes and quantities for shirts"></textarea>
+                </div>
+
+                <div id="koozie_specs_group" class="form-group product-specific-field">
+                    <label for="koozie_specs">Koozie Drink Sizes:</label>
+                    <textarea id="koozie_specs" name="koozie_specs" rows="3" placeholder="e.g., Standard Can, Slim Can, Bottle, or custom dimensions"></textarea>
+                </div>
+
+                <div id="sweatshirt_sizes_group" class="form-group product-specific-field">
+                    <label for="sweatshirt_sizes">Sweatshirt Sizes (e.g., 2 S, 5 M, 3 L, 1 XL):</label>
+                    <textarea id="sweatshirt_sizes" name="sweatshirt_sizes" rows="3" placeholder="Specify sizes and quantities for sweatshirts"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="item_colors">Desired Item Color(s):</label>
+                    <input type="text" id="item_colors" name="item_colors" placeholder="e.g., Black, White, Heather Grey">
+                </div>
+                
+                <p class="one-color-note"><strong>Important Note: Only one print color is available per design at this time. Multi-color prints are not offered.</strong></p>
+
+                <div class="form-group">
+                    <label for="design_description">Your Design Idea / Text (for one print color):</label>
+                    <textarea id="design_description" name="design_description" rows="6" placeholder="Describe your design in detail. Include any text, desired font (if known), and the ONE specific color you want your design to be printed in."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="additional_comments">Any Additional Comments or Questions?</label>
+                    <textarea id="additional_comments" name="additional_comments" rows="3"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Submit Order Request</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="thank-you-section">
+            <h1>Thank You!</h1>
+            <p>Your order request has been submitted!</p>
+            <p>We will contact you shortly to confirm details and provide payment instructions.</p>
+            <p>In the meantime, feel free to reach out with any questions.</p>
+            <p>Email: <a href="mailto:beachfrontprintco@gmail.com">beachfrontprintco@gmail.com</a></p>
+            <p><a href="index.html">Return to Homepage</a></p>
+        </section>
+
+        <section class="venmo-qr-section">
+            <h3>Ready for Payment?</h3>
+            <p>Once your order details are confirmed by our team, you can conveniently send your payment via Venmo.</p>
+            <a href="https://venmo.com/RaymondLeitner" target="_blank">
+                <img src="venmo-qr.png" alt="Venmo QR Code">
+            </a>
+            <p>Scan the code or find us on Venmo: <span class="venmo-handle">@RaymondLeitner</span></p>
+            <p><small>Please confirm the final amount with us before sending payment.</small></p>
+        </section>
+
+
+        <section id="contact" class="contact-info">
+            <h3>Have Questions or Need a Custom Quote?</h3>
+            <p>We're here to help! Reach out to us directly via email.</p>
+            <p>Email: <a href="mailto:beachfrontprintco@gmail.com">beachfrontprintco@gmail.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-social-links">
+                <a href="https://www.facebook.com/BeachfrontPrintCo" target="_blank">Facebook</a>
+                <a href="https://youtube.com/@beachfrontprintco?si=CZ4AH03XiFTtPdYU" target="_blank">YouTube</a>
+                <a href="https://www.instagram.com/beachfrontprintco/" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@beachfrontprintco?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderFormSection = document.getElementById('order-form');
+            const thankYouSection = document.getElementById('thank-you-section');
+            const orderForm = document.getElementById('orderForm');
+
+            function showOrderForm(productName) {
+                const selectedProductType = document.getElementById('selected-product-type');
+                const hiddenProductType = document.getElementById('hidden-product-type');
+
+                const shirtSizesGroup = document.getElementById('shirt_sizes_group');
+                const koozieSpecsGroup = document.getElementById('koozie_specs_group');
+                const sweatshirtSizesGroup = document.getElementById('sweatshirt_sizes_group');
+
+                shirtSizesGroup.style.display = 'none';
+                koozieSpecsGroup.style.display = 'none';
+                sweatshirtSizesGroup.style.display = 'none';
+
+                // Reset required attributes for product-specific fields
+                document.getElementById('shirt_sizes').required = false;
+                document.getElementById('koozie_specs').required = false;
+                document.getElementById('sweatshirt_sizes').required = false;
+
+                if (productName === 'Shirt') {
+                    shirtSizesGroup.style.display = 'block';
+                    document.getElementById('shirt_sizes').required = true;
+                } else if (productName === 'Koozie') {
+                    koozieSpecsGroup.style.display = 'block';
+                    document.getElementById('koozie_specs').required = true;
+                } else if (productName === 'Sweatshirt') {
+                    sweatshirtSizesGroup.style.display = 'block';
+                    document.getElementById('sweatshirt_sizes').required = true;
+                }
+
+                selectedProductType.innerText = productName;
+                hiddenProductType.value = productName;
+                orderFormSection.classList.add('active'); // Show the main form
+                thankYouSection.style.display = 'none'; // Ensure thank you is hidden when showing form
+
+                window.scrollTo({
+                    top: orderFormSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Make showOrderForm globally accessible if called from onclick in HTML
+            window.showOrderForm = showOrderForm;
+
+            // This function now handles the Formspree submission and then updates the UI
+            orderForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const statusMessage = document.getElementById('thank-you-section'); // Using this for feedback
+                const formData = new FormData(orderForm);
+
+                try {
+                    const response = await fetch(orderForm.action, {
+                        method: orderForm.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        orderFormSection.style.display = 'none';
+                        statusMessage.style.display = 'block';
+                        orderForm.reset(); // Clear the form fields after successful submission
+                        window.scrollTo({ top: statusMessage.offsetTop - 50, behavior: 'smooth' });
+                    } else {
+                        // Handle server errors or Formspree specific errors
+                        const data = await response.json();
+                        if (data.errors) {
+                            alert('Oops! There was an error sending your message:\\n' + data.errors.map(error => error.message).join('\\n'));
+                        } else {
+                            alert('Oops! There was an unexpected error submitting your form.');
+                        }
+                    }
+                } catch (error) {
+                    alert('Oops! There was a network error or problem submitting your form. Please try again.');
+                    console.error('Form submission error:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
